@@ -12,18 +12,19 @@ public class Main {
         while(pilih != 4){
             System.out.println("1. Input Data");
             System.out.println("2. Remove Data");
-            System.out.println("3. Cetak Data");
+            System.out.println("3. Print Data");
             System.out.println("4. Exit");
             pilih = input.nextInt();
+
             if(pilih == 1){
-                System.out.println("Input To Do List");
+                System.out.println("Input");
                 String tDL = input.next();
                 queue.enqueue(tDL);
                 System.out.println();
             }
             else if(pilih == 2){
                 queue.dequeue();
-                System.out.println("Remove Success For First Assignment");
+                System.out.println("Success");
                 System.out.println();
             }
             else if(pilih == 3){

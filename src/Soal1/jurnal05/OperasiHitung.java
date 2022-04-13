@@ -7,33 +7,33 @@ public class OperasiHitung {
 
     public OperasiHitung(String masukan) {
         inputan = masukan;
-        int ukuranStack = inputan.length();
-        stack = new Stack(ukuranStack);
+        int batasStack= inputan.length();
+        stack = new Stack(batasStack);
     }
 
     public String doTrans() {
-        for (int A = 0; A < inputan.length(); A++) {
-            char amr = inputan.charAt(A);
-            switch (amr) {
+        for (int i = 0; i < inputan.length(); i++) {
+            char angka = inputan.charAt(i);
+            switch (angka) {
                 case '+':
                 case '-':
-                    gotOper(amr, 1);
+                    operator(angka, 1);
                     break;
                 case '*':
                 case '/':
-                    gotOper(amr, 2);
+                    operator(angka, 2);
                     break;
                 case '^':
-                    gotOper(amr, 3);
+                    operator(angka, 3);
                     break;
                 case '(':
-                    stack.push(amr);
+                    stack.push(angka);
                     break;
                 case ')':
-                    gotParen(amr);
+                    gotParen(angka);
                     break;
                 default:
-                    output = output + amr;
+                    output = output + angka;
                     break;
             }
         }
@@ -43,7 +43,7 @@ public class OperasiHitung {
         return output;
     }
 
-    public void gotOper(char opThis, int prec1) {
+    public void operator(char opThis, int bilangan1) {
         while (!stack.isEmpty()) {
             char opTop = (char) stack.pop();
             if (opTop == '(') {
@@ -51,14 +51,14 @@ public class OperasiHitung {
                 break;
             }
             else {
-                int prec2;
+                int bilangan2;
                 if (opTop == '+' || opTop == '-')
-                    prec2 = 1;
+                    bilangan2 = 1;
                 else if (opTop == '*' || opTop == '/')
-                    prec2 = 2;
+                    bilangan2 = 2;
                 else
-                    prec2 = 3;
-                if (prec2 < prec1)
+                    bilangan2 = 3;
+                if (bilangan2 < bilangan1)
                 {
                     stack.push(opTop);
                     break;
